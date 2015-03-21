@@ -10,55 +10,43 @@
 	<string>emptyExample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</key>
-		<string>https://github.com/openframeworks/openFrameworks.git</string>
-		<key>849A48B3-10F3-4697-9A2A-2B24BB255EA8</key>
-		<string>https://github.com/kentaroid/ofxTrueTypeFontUL2.git</string>
+		<key>5AD1EDA3438052ACA5776F7A296DBE10031C5DCA</key>
+		<string>https://github.com/muthesius/manuel-text.git</string>
 		<key>FE071F2E712DEC94733C753359E9EFBB6F7808DA</key>
-		<string>https://github.com/kentaroid/ofxTrueTypeFontUL2.git</string>
+		<string>https://github.com/jens-a-e/ofxTrueTypeFontUL2</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>addons/ofxTrueTypeFontUL2/example/emptyExample.xcodeproj</string>
+	<string>example/emptyExample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</key>
-		<string>../../../../..</string>
-		<key>849A48B3-10F3-4697-9A2A-2B24BB255EA8</key>
-		<string>../../../../../../ofxTrueTypeFontUL2</string>
+		<key>5AD1EDA3438052ACA5776F7A296DBE10031C5DCA</key>
+		<string>../../../../../..</string>
 		<key>FE071F2E712DEC94733C753359E9EFBB6F7808DA</key>
-		<string>../../../../..addons/ofxtruetypefontul2/</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/openframeworks/openFrameworks.git</string>
+	<string>https://github.com/jens-a-e/ofxTrueTypeFontUL2</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</string>
+	<string>FE071F2E712DEC94733C753359E9EFBB6F7808DA</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5AD1EDA3438052ACA5776F7A296DBE10031C5DCA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>..</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>FE071F2E712DEC94733C753359E9EFBB6F7808DA</string>
 			<key>IDESourceControlWCCName</key>
-			<string>ofxtruetypefontul2</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>849A48B3-10F3-4697-9A2A-2B24BB255EA8</string>
-			<key>IDESourceControlWCCName</key>
 			<string>ofxTrueTypeFontUL2</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</string>
-			<key>IDESourceControlWCCName</key>
-			<string>openFrameworks</string>
 		</dict>
 	</array>
 </dict>

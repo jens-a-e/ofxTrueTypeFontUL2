@@ -213,3 +213,5 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+example/emptyExample.xcodeproj/project.xcworkspace/xcuserdata
+example/emptyExample.xcodeproj/xcuserdata
