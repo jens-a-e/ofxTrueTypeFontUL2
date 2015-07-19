@@ -805,9 +805,9 @@ public:
 	vector<ul2_face_codepoint> loadedChars;
 
 	template <class T>
-	void commonLayouts(wstring src ,float x, float y,float width,float height,int textAlign,ul2_rendering_types type ,T &result);
+	void commonLayouts(wstring src ,float x, float y,float width,float height,int textAlign,ul2_rendering_types type ,T &result, int length = -1);
 	template <class T>
-	void commonLayouts2(wstring src ,float x, float y,float width,float height,ul2_text_align textAlign,vector<ofRectangle> *lineWidthList,ul2_rendering_types type ,T &result);
+	void commonLayouts2(wstring src ,float x, float y,float width,float height,ul2_text_align textAlign,vector<ofRectangle> *lineWidthList,ul2_rendering_types type ,T &result, int length = -1);
 
 	void addOTFeature(const char*feature_tag,unsigned int value,unsigned int  start=0,unsigned int end=static_cast<unsigned>(-1));
 	void removeOTFeature(const char*feature_tag);
@@ -1184,10 +1184,12 @@ template<class T>inline void _push_layout(T&t,float x,float y,int i){}
 inline void _push_layout(vector<ofxFaceVec2> &t,float x,float y,int i){ofxFaceVec2 p;p.x=x;p.y=y;p.faceIndex=i; t.push_back(p);}
 
 template<class T>
-void ofxTrueTypeFontUL2::Impl::commonLayouts2(wstring src ,float x, float y,float width,float height,ul2_text_align textAlign,vector<ofRectangle> *lineWidthList,ul2_rendering_types type ,T &result){
+void ofxTrueTypeFontUL2::Impl::commonLayouts2(wstring src ,float x, float y,float width,float height,ul2_text_align textAlign,vector<ofRectangle> *lineWidthList,ul2_rendering_types type ,T &result, int length){
 
 	const vector<ul2_string_layouts_info> &pos=getHbPosition(src);
-	const int len = pos.size();
+  const int pLength = pos.size();
+  const int len = length < 0 ? pLength : MIN(pLength,length);
+  ofLog(OF_LOG_ERROR,"%i\t%i\t%i",length,pLength,len);
 
 	//control direction
 	const float rvRTL = m_direction==HB_DIRECTION_RTL ? -1.0f: 1.0f ;
@@ -1363,11 +1365,11 @@ void ofxTrueTypeFontUL2::Impl::commonLayouts2(wstring src ,float x, float y,floa
 }
 
 template<class T>
-void ofxTrueTypeFontUL2::Impl::commonLayouts(wstring src ,float x, float y,float width,float height,int textAlign,ul2_rendering_types type ,T &result){
+void ofxTrueTypeFontUL2::Impl::commonLayouts(wstring src ,float x, float y,float width,float height,int textAlign,ul2_rendering_types type ,T &result, int length){
 	if(textAlign!=UL2_TEXT_ALIGN_INVALID){
 		ul2_text_align align=UL2_TEXT_ALIGN_INVALID;
 		vector<ofRectangle> wList;
-		commonLayouts2(src,0,0,width,height,UL2_TEXT_ALIGN_INVALID,NULL,UL2_GET_LINE_WIDTH,wList);
+		commonLayouts2(src,0,0,width,height,UL2_TEXT_ALIGN_INVALID,NULL,UL2_GET_LINE_WIDTH,wList,length);
 		ofRectangle vBox;
 		const unsigned int size=wList.size();
 		if(bAlignByPixel){
@@ -1408,9 +1410,9 @@ void ofxTrueTypeFontUL2::Impl::commonLayouts(wstring src ,float x, float y,float
 			else if( textAlign & UL2_TEXT_ALIGN_CENTER   ) x += (width-vBox.width)*.5f-vBox.x;
 			else if( textAlign & UL2_TEXT_ALIGN_RIGHT    ) x += width-vBox.width-vBox.x;
 		}
-		commonLayouts2(src,x,y,width,height,align,&wList,type,result);
+		commonLayouts2(src,x,y,width,height,align,&wList,type,result,length);
 	}else{
-		commonLayouts2(src,x,y,width,height,UL2_TEXT_ALIGN_INVALID,NULL,type,result);
+		commonLayouts2(src,x,y,width,height,UL2_TEXT_ALIGN_INVALID,NULL,type,result,length);
 	}
 }
 
@@ -1929,7 +1931,7 @@ ofPath ofxTrueTypeFontUL2::getCharacterAsPoints(string character) {
 }
 
 //-----------------------------------------------------------
-void ofxTrueTypeFontUL2::drawString(wstring src, float x, float y,float width,float height,int textAlign) {
+void ofxTrueTypeFontUL2::drawString(wstring src, float x, float y,float width,float height,int textAlign,int length) {
 	if (!mImpl->bLoadedOk_){
 		ofLog(OF_LOG_ERROR,"ofxTrueTypeFontUL2::drawString - Error : font not allocated -- line %d in %s", __LINE__,__FILE__);
 		return;
@@ -1939,10 +1941,11 @@ void ofxTrueTypeFontUL2::drawString(wstring src, float x, float y,float width,fl
 		return;
 	}
 	bool result;
-	mImpl->commonLayouts(src,x,y,width, height, textAlign,UL2_DRAW_TEXTURE,result);
+  length = length < 0 ? src.length() : MIN(src.length(), length);
+	mImpl->commonLayouts(src,x,y,width, height, textAlign,UL2_DRAW_TEXTURE,result,length);
 }
-void ofxTrueTypeFontUL2::drawString(string src, float x, float y,float width,float height,int textAlign) {
-	return drawString(ul2_ttf_utils::convToWString(src), x, y,width, height, textAlign);
+void ofxTrueTypeFontUL2::drawString(string src, float x, float y,float width,float height,int textAlign, int length) {
+	return drawString(ul2_ttf_utils::convToWString(src), x, y,width, height, textAlign, length);
 }
 
 //-----------------------------------------------------------

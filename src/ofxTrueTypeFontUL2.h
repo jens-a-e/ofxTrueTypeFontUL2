@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "ofTrueTypeFont.h"
+#include "ofMain.h"
 
 typedef enum {
 	UL2_TEXT_DIRECTION_INVALID = 0 ,
@@ -42,8 +43,8 @@ public:
 	void unloadFont();
     
     
-	void drawString(wstring s, float x, float y,float width=0,float height=0,int textAlign=UL2_TEXT_ALIGN_INVALID);
-	void drawString(string s, float x, float y,float width=0,float height=0,int textAlign=UL2_TEXT_ALIGN_INVALID);
+	void drawString(wstring s, float x, float y,float width=0,float height=0,int textAlign=UL2_TEXT_ALIGN_INVALID, int length = -1);
+	void drawString(string s, float x, float y,float width=0,float height=0,int textAlign=UL2_TEXT_ALIGN_INVALID, int length = -1);
 	
 	void drawStringAsShapes(wstring s, float x, float y,float width=0,float height=0,int textAlign=UL2_TEXT_ALIGN_INVALID);
 	void drawStringAsShapes(string s, float x, float y,float width=0,float height=0,int textAlign=UL2_TEXT_ALIGN_INVALID);
