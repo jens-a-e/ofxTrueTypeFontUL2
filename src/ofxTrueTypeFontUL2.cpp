@@ -1189,7 +1189,6 @@ void ofxTrueTypeFontUL2::Impl::commonLayouts2(wstring src ,float x, float y,floa
 	const vector<ul2_string_layouts_info> &pos=getHbPosition(src);
   const int pLength = pos.size();
   const int len = length < 0 ? pLength : MIN(pLength,length);
-  ofLog(OF_LOG_ERROR,"%i\t%i\t%i",length,pLength,len);
 
 	//control direction
 	const float rvRTL = m_direction==HB_DIRECTION_RTL ? -1.0f: 1.0f ;
